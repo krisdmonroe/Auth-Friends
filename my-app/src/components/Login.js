@@ -14,7 +14,7 @@ margin:0 auto;
 width:30%
 `;
 
-const Login = () => {
+const Login = (props) => {
     
     const [state, setState] = useState({
         username:'',
@@ -36,6 +36,7 @@ const Login = () => {
         .then(res => {
             localStorage.setItem('token', res.data.payload);
             setIsLoading(false);
+            props.history.push('/protected');
         })
         .catch(err => console.log(err));
     }

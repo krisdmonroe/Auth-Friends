@@ -17,7 +17,7 @@ const Title = styled.h1`
 text-align:center
 `;
 
-const FriendsList = () => {
+const FriendsList = (props) => {
     const [state, setState] = useState({
         id:Date.now(),
         name: '',
@@ -33,8 +33,10 @@ const FriendsList = () => {
         e.preventDefault();
         console.log('this is state',state)
         axiosWithAuth().post('/api/friends', state)
-        .then(res => 
-            console.log(res)
+        .then(res => {
+            props.history.push('/protected');
+        }
+            
         )
         .catch(err => console.log(err));
     }

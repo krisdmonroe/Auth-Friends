@@ -22,13 +22,19 @@ const Friends = () => {
           })
           .catch(err => console.log(err));
       },[]);
-      
+
+      const Delete = (id) => {
+        axiosWithAuth().delete(`/api/friends/${id}`)
+        .then(res => {
+            setState(res.data)
+        })
+    }
 
       console.log('this is state',state)
     return(
         <Div>
             {state.map(item => 
-            <FriendsList friend={item}/>
+            <FriendsList friend={item} Delete={Delete}/>
             )}
         </Div>
     )

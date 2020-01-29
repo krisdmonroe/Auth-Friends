@@ -29,9 +29,7 @@ const Div = styled.div`
 const FriendsList = (props) => {
     const classes = useStyles();
  console.log(props.friend)
- const Delete = (id) => {
-    axiosWithAuth().delete(`/api/friends/${id}`)
-}
+ 
 // const Edit = (id) {
 //     axiosWithAuth().put(`/api/friends/${id}`)
 // }
@@ -50,7 +48,7 @@ const FriendsList = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={()=> {Delete(props.friend.id)}}>
+        <Button size="small" color="primary" onClick={()=> {props.Delete(props.friend.id)}}>
           Delete
         </Button>
         {/* <Button size="small" color="primary">
